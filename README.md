@@ -1,2 +1,2 @@
-# SysProgrammingC.github.io
+# SysProgrammingC
 Develop System level programming using c
