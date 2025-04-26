@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Guide - Pointers & Function Pointers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 3px solid #333;
+            padding-left: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C Programming Guide: Pointers & Function Pointers</h1>
+
+    <h2>🔹 Introduction to Pointers</h2>
+    <p>Pointers store a reference (address) to another value rather than holding a direct value.</p>
+    <pre>
+// Syntax of pointer
+int num = 42;
+int *numptr = &num;
+    </pre>
+
+    <h2>🔹 Pointer Declaration</h2>
+    <p>Pointers are declared using an asterisk (*) after the data type.</p>
+    <pre>
+int num;  // Normal variable declaration
+int *ptr; // Declaring a pointer
+    </pre>
+
+    <h2>🔹 Pointer Dereference</h2>
+    <p>Dereferencing a pointer allows accessing the value of the memory location it refers to.</p>
+    <blockquote>
+        A pointer must be assigned a pointee before a dereference operation will work.
+    </blockquote>
+
+    <h2>🔹 Null Pointers</h2>
+    <p>`NULL` is a special pointer value that points to nothing.</p>
+
+    <h2>🔹 Pointer Assignment</h2>
+    <p>Assigning one pointer to another makes both point to the same location.</p>
+    <pre>
+int a = 42;
+int *numptr = &a;
+int *second = numptr;  // Both now point to 'a'
+    </pre>
+
+    <h2>🔹 Pointer Operators</h2>
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Dereference</td>
+            <td>Access value stored in memory</td>
+        </tr>
+        <tr>
+            <td>&</td>
+            <td>Address-of</td>
+            <td>Get memory address of a variable</td>
+        </tr>
+        <tr>
+            <td>-></td>
+            <td>Pointer to</td>
+            <td>Access struct fields via pointer</td>
+        </tr>
+    </table>
+
+    <h2>🔹 Difference Between <code>ptr++</code> and <code>++ptr</code></h2>
+    <pre>
+int arr[] = {10, 20, 30};
+int *ptr = arr;
+
+printf("%d\n", *ptr++); // Prints 10, then moves to the next element
+printf("%d\n", *ptr);   // Prints 20
+    </pre>
+
+    <h2>🔹 Function Pointer</h2>
+    <p>Function pointers allow **dynamic function execution**, enabling flexible programming structures.</p>
+    <h3>1️⃣ Declaration</h3>
+    <pre>
+int (*funcPtr)(int, int);  // Function pointer
+    </pre>
+
+    <h3>2️⃣ Assigning a Function</h3>
+    <pre>
+int add(int a, int b) { return a + b; }
+funcPtr = add;  // Assign function address
+    </pre>
+
+    <h3>3️⃣ Calling via Pointer</h3>
+    <pre>
+int result = funcPtr(10, 5);  // Calls add(10, 5)
+printf("Result: %d\n", result);
+    </pre>
+
+    <h3>🔹 Passing Function Pointers as Arguments</h3>
+    <pre>
+int execute(int (*func)(int, int), int x, int y) {
+    return func(x, y);
+}
+    </pre>
+
+    <h2>🔹 Summary of Pointer Rules</h2>
+    <ul>
+        <li>A pointer stores a reference to its pointee.</li>
+        <li>Dereferencing retrieves the value stored at the referenced memory.</li>
+        <li>Pointers must be assigned a valid address before dereferencing.</li>
+        <li>Pointer assignment enables sharing of data between functions.</li>
+    </ul>
+
+</body>
+</html>
